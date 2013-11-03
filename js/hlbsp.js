@@ -160,7 +160,7 @@ var HLBSP = function(filename, callback)
 	if (filename) this.load(filename);
 }
 
-HLBSP.Debug = true;
+HLBSP.Debug = false;
 HLBSP.Textures = {};			// textures map that lasts through the sessions
 HLBSP.ShowTextures = false;
 
@@ -265,6 +265,8 @@ HLBSP.prototype =
 			game.cameraPosition[2] = -parseFloat(org[2]) - 32;
 			playerAngles = playerStart["angles"] ? playerStart["angles"].split(" ") : ["0", "0", "0"];
 			game.zAngle = ((-parseFloat(playerAngles[1]) + 90 ) * Math.PI/180) || 0;
+			game.xAngle = 0.0;
+			game.yAngle = 0.0;
 			HLBSP.Debug && console.log("Player start: ", org);
 			HLBSP.Debug && console.log("Player start z-rotation: ", playerAngles, playerAngles[1]);
 		}

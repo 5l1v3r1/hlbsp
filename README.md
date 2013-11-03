@@ -1,11 +1,11 @@
-Half-Life WebGL level and model viewer
+Force: Leashed WebGL level viewer
 ======================================
 
-This project loads and displays .bsp and .mdl files from the game Half-Life, using WebGL.
+This project loads and displays .bsp and .mdl files from the game Force: Leashed, using WebGL.
 
 DEMO:
 -----
-https://dl.dropbox.com/u/11531325/hlbsp/index.html
+http://www.kepuli.com/bspviewer/
 
 **(Please note, the levels and textures might take a while to load)**
 
@@ -15,13 +15,9 @@ https://dl.dropbox.com/u/11531325/hlbsp/index.html
 
 NOTES:
 - .bsp, .wad and .mdl files are loaded and processed as binary files
-- models rendering is very crude - no animation support and thus some of the bones are distorted (omg zombie)
 - some brush entities are not positioned correctly, this might require more sophisticated level parsing 
 
-
-Feel free to extend this project! It would be awesome to see some animated characters, workable entities, effects and what not ;)
-
-
+This viewer is based on Michael Domanski's work on [hlbsp](https://github.com/rein4ce/hlbsp).
 
 Code was initially inspired by Brandon Jones's Quake2 viewer.
 It uses gl-utils and js-struct libraries written by him, go, take a look!

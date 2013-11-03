@@ -10,6 +10,7 @@ var MapsList =
 	"flx02.bsp",
 	"flx03.bsp",
 	"flx04.bsp",
+	"flx05.bsp",
 	"flx06.bsp",
 	"flx07.bsp"
 ];

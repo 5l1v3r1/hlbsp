@@ -160,7 +160,7 @@ var HLBSP = function(filename, callback)
 	if (filename) this.load(filename);
 }
 
-HLBSP.Debug = false;
+HLBSP.Debug = true;
 HLBSP.Textures = {};			// textures map that lasts through the sessions
 HLBSP.ShowTextures = false;
 
@@ -333,7 +333,7 @@ HLBSP.prototype =
 				width: newWidth,
 				height: newHeight,
 				texture: gl.createTexture(),
-				translucent: name == "aaatrigger"
+				translucent: (name == "aaatrigger") || (name == "trigger")
 			};
 
 			gl.bindTexture(gl.TEXTURE_2D, texture.texture);

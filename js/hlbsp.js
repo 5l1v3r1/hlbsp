@@ -263,8 +263,10 @@ HLBSP.prototype =
 			game.cameraPosition[0] = -parseFloat(org[0]);
 			game.cameraPosition[1] = -parseFloat(org[1]);
 			game.cameraPosition[2] = -parseFloat(org[2]) - 32;
-			game.zAngle = ((-parseFloat(playerStart["angle"]) + 90 ) * Math.PI/180) || 0;
+			playerAngles = playerStart["angles"] ? playerStart["angles"].split(" ") : ["0", "0", "0"];
+			game.zAngle = ((-parseFloat(playerAngles[1]) + 90 ) * Math.PI/180) || 0;
 			HLBSP.Debug && console.log("Player start: ", org);
+			HLBSP.Debug && console.log("Player start z-rotation: ", playerAngles, playerAngles[1]);
 		}
 
 		this.loadTextures(bsp.texInfo, function(tex)

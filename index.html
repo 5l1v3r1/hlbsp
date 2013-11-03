@@ -121,6 +121,11 @@
             margin: 0;
             padding: 0;
         }
+		
+		body {
+			font-family: "Sans", sans-serif;
+		}
+		
         #container {
             margin: 5px;
             position: relative;
@@ -135,7 +140,8 @@
             position: absolute;
             cursor: pointer;
             width: 100px;
-            font: 13px Arial;
+            /* font: 13px Arial; */
+			font-size: 13px;
             line-height: 35px;
             color: white;
             text-shadow: 1px 1px 0 black;
@@ -150,7 +156,9 @@
         }
         #map-name {
             position: absolute;
-            font: bold 12px Arial;
+            /*font: bold 12px Arial;*/
+			font-weight: bold;
+			font-size: 12px;
             color: white;
             text-shadow: 1px 1px 0 black;
             bottom: 0;
@@ -180,7 +188,8 @@
             pointer-events: auto;
         }
         #map-list ul li {
-            font: 11px Arial;
+            /* font: 11px Arial; */
+			font-size: 11px;
             color: #bbb;
             padding: 4px 4px 4px 8px;
             border-bottom: 1px solid #eee;
@@ -202,11 +211,21 @@
             position: absolute;
             width: 100%;
             text-align: center;
-            font: bold 16px Arial;
+            /*font: bold 16px Arial;*/
             line-height: 600px;
             color: white;
             text-shadow: 1px 1px 0px black;
         }
+		
+		#logo {
+			position: absolute;
+			left: 5px;
+			right: 0px;
+		}
+		
+		#logolink:hover {
+			background-color: rgba(0.0, 0.0, 0.0, 0.5);
+		}
     </style>
 </head>
 
@@ -214,6 +233,9 @@
 <body>
     <div id="container">
         <canvas id="viewport"></canvas>
+		<a id="logolink" href="http://www.kepuli.com/force_leashed/">
+				<img id="logo" src="fl_logo.png" />
+			</a>
         <div id="viewport-overlay">
             <div id="prev" class="nav" style="left: 0; border-right: 1px solid white">&larr;&nbsp;&nbsp;&nbsp;Previous</div>
             <div id="next" class="nav" style="right: 0; border-left: 1px solid white">Next&nbsp;&nbsp;&nbsp;&rarr;</div>

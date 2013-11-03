@@ -131,8 +131,6 @@ Game.prototype =
 		// set default shader
 		gl.useProgram(shader);
 
-
-
 		// setup matrices
 		mat4.identity(this.modelViewMat);
 		mat4.rotateX(this.modelViewMat, this.xAngle-Math.PI/2);
@@ -148,6 +146,53 @@ Game.prototype =
 			this.map.drawEntities(shader);
 		}
 	},
+	
+	updateViewAngles: function(self, xDelta, yDelta)
+	{
+		self.zAngle += xDelta*0.025;
+		while (self.zAngle < 0)
+			self.zAngle += Math.PI*2;
+		while (self.zAngle >= Math.PI*2)
+			self.zAngle -= Math.PI*2;
+
+		self.xAngle += yDelta*0.025;
+		while (self.xAngle < -Math.PI*0.5)
+			self.xAngle = -Math.PI*0.5;
+		while (self.xAngle > Math.PI*0.5)
+			self.xAngle = Math.PI*0.5;
+	},
+	
+	initTouch: function(self)
+	{
+		console.log("Initializing touch events.");
+		var canvas = document.getElementById("viewport");
+		
+		var lastX = 0;
+		var lastY = 0;
+		
+		canvas.addEventListener("touchstart", function (event) {
+			event.preventDefault();
+			lastX = event.targetTouches[0].clientX;
+			lastY = event.targetTouches[0].clientY;
+			
+		}, false);
+		
+		canvas.addEventListener("touchmove", function (event) {
+			event.preventDefault();
+			
+			var touchx = event.targetTouches[0].clientX;
+			var touchy = event.targetTouches[0].clientY;
+			var mult = 0.15;
+			
+			var xDelta = touchx - lastX;
+			var yDelta = touchy - lastY;
+			lastX = touchx;
+			lastY = touchy;
+			
+			self.updateViewAngles(self, -xDelta*mult, -yDelta*mult);
+		}, false);
+	},
+
 
 	initEvents: function()
 	{
@@ -155,6 +200,8 @@ Game.prototype =
 		var lastX = 0;
 		var lastY = 0;
 		var self = this;
+		
+		self.initTouch(self);
 
 		$(window).keydown(function(event) {
 			self.pressed[event.keyCode] = true;
@@ -213,21 +260,12 @@ Game.prototype =
 			var yDelta = event.pageY  - lastY;
 			lastX = event.pageX;
 			lastY = event.pageY;
-
+			
 			if (movingModel) {
-				self.zAngle += xDelta*0.025;
-				while (self.zAngle < 0)
-					self.zAngle += Math.PI*2;
-				while (self.zAngle >= Math.PI*2)
-					self.zAngle -= Math.PI*2;
-
-				self.xAngle += yDelta*0.025;
-				while (self.xAngle < -Math.PI*0.5)
-					self.xAngle = -Math.PI*0.5;
-				while (self.xAngle > Math.PI*0.5)
-					self.xAngle = Math.PI*0.5;
+				self.updateViewAngles(self, xDelta, yDelta);
 			}
 		});
+		
 	}
 }
 

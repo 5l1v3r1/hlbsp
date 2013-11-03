@@ -39,7 +39,7 @@ var Game = function()
 	this.cameraMat = mat4.create();
 
 	this.cameraPosition = [0, 0, 0];
-	this.speed = 15;
+	this.speed = 8.0;
 	this.zAngle = 3;
 	this.xAngle = 0;
 
@@ -192,7 +192,7 @@ Game.prototype =
 			mat4.multiplyVec3(self.cameraMat, dir);
 			vec3.add(self.cameraPosition, dir);
 
-		}, 33);
+		}, 16);
 
 		$('#viewport').mousedown(function(event) {
 			if(event.which == 1) {

@@ -81,12 +81,14 @@ Game.prototype =
 
 			var self = this;
 
-			// Draw Frames in quick succession
-			setInterval(function()
-			{
+			var drawFrame = function() {
 				self.drawFrame(self.activeShader);
 				self.frame++;
-			}, 1);
+				window.requestAnimationFrame(drawFrame);
+			};
+			
+			window.requestAnimationFrame(drawFrame);
+			
 		}
 	},
 
